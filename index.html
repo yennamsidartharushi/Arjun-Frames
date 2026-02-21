@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjun Frames | Premium Photo Frames Online</title>
+    <meta name="description" content="Premium Frames. Timeless Memories. Shop high-quality photo frames with fast courier delivery across India.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* Core Variables & Reset */
+        :root {
+            --bg-color: #FAFAFA;
+            --surface-color: #FFFFFF;
+            --text-main: #111111;
+            --text-light: #666666;
+            --text-muted: #999999;
+            --accent-gold: #D4AF37;
+            --stock-green: #2E7D32;
+            --stock-red: #C62828;
+            --wa-green: #25D366;
+            --border-light: #EAEAEA;
+            --card-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .logo, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 500;}
+        .section-header p { color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto;}
+
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid var(--border-light);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 1.2rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-main);
+            font-size: 0.85rem; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 1.2px; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding-top: 80px; max-width: 100%;
+            background: linear-gradient(to bottom, #FFFFFF, #FAFAFA);
+        }
+        .hero-content { max-width: 800px; padding: 0 2rem; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 500;}
+        .hero h1 em { font-style: italic; color: var(--accent-gold); }
+        .hero p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 2.5rem; }
+        .btn-primary {
+            background-color: var(--text-main); color: #FFF;
+            padding: 1.2rem 3rem; text-decoration: none; font-size: 0.9rem;
+            font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+            transition: var(--transition-smooth); display: inline-block; cursor: pointer; border: none;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-gold); transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Story & Craftsmanship */
+        .story-section {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .story-image { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; }
+        .story-content h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .story-content p { color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        /* How It Works */
+        .process-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+        }
+        .process-step i { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1rem; }
+        .process-step h3 { font-size: 1.1rem; margin-bottom: 0.5rem; font-family: 'Inter', sans-serif; font-weight: 600;}
+        .process-step p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* Shop Utilities (Pincode, Search, Filter) */
+        .shop-controls {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;
+            background: var(--surface-color); padding: 1.5rem; border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .pincode-checker { display: flex; gap: 0.5rem; }
+        .pincode-checker input, .search-filter input, .search-filter select {
+            padding: 0.8rem 1rem; border: 1px solid var(--border-light);
+            border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+            outline: none; transition: border-color 0.3s;
+        }
+        .pincode-checker input:focus, .search-filter input:focus { border-color: var(--accent-gold); }
+        .btn-secondary {
+            background: #EEEEEE; color: var(--text-main); border: none;
+            padding: 0.8rem 1.5rem; border-radius: 4px; cursor: pointer;
+            font-weight: 500; transition: background 0.3s;
+        }
+        .btn-secondary:hover { background: #DDDDDD; }
+        .pincode-msg { font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; margin-left: 10px;}
+        .search-filter { display: flex; gap: 1rem; }
+
+        /* Product Grid */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 3rem 2rem; }
+        .product-card {
+            background: var(--surface-color); border-radius: 4px;
+            transition: var(--transition-smooth); position: relative;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow); z-index: 10;}
+        .product-image-container { width: 100%; height: 380px; overflow: hidden; position: relative; background: #F5F5F5;}
+        
+        /* Crossfade Lifestyle Image on Hover */
+        .product-image, .lifestyle-image {
+            width: 100%; height: 100%; object-fit: cover;
+            position: absolute; top: 0; left: 0; transition: opacity 0.6s ease;
+        }
+        .lifestyle-image { opacity: 0; }
+        .product-card:hover .lifestyle-image { opacity: 1; }
+        .product-card:hover .product-image { opacity: 0; }
+
+        .product-info { padding: 1.5rem 1rem; text-align: center; }
+        .stock-badge { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 0.8rem; }
+        .in-stock { color: var(--stock-green); } .out-of-stock { color: var(--stock-red); }
+        .product-info h3 { font-size: 1.2rem; margin-bottom: 0.4rem; font-weight: 500; font-family: 'Playfair Display', serif;}
+        .size-category { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem; text-transform: capitalize;}
+        .price { font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; }
+        
+        .btn-whatsapp {
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+            width: 100%; background-color: var(--text-main); color: #FFF;
+            padding: 1rem; text-decoration: none; font-size: 0.85rem;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            border: none; cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-whatsapp:hover { background-color: var(--wa-green); }
+        .btn-whatsapp:disabled { background-color: #EEEEEE; color: #AAAAAA; cursor: not-allowed; }
+
+        /* Size Guide Section */
+        .size-guide { background-color: #F9F9F9; max-width: 100%; text-align: center;}
+        .size-guide-content { max-width: 1200px; margin: 0 auto; }
+
+        /* Testimonials */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .testimonial-card {
+            background: var(--surface-color); padding: 2.5rem 2rem;
+            border: 1px solid var(--border-light); border-radius: 4px; text-align: center;
+        }
+        .stars { color: var(--accent-gold); margin-bottom: 1rem; font-size: 1.2rem;}
+        .quote { font-style: italic; color: var(--text-light); margin-bottom: 1.5rem; font-size: 0.95rem;}
+        .author { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;}
+
+        /* Floating Action Button */
+        .fab-whatsapp {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: var(--wa-green); color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 32px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000; transition: transform 0.3s ease; text-decoration: none;
+        }
+        .fab-whatsapp:hover { transform: scale(1.1); }
+
+        /* Footer */
+        footer { background: #111; color: #FFF; padding: 5rem 2rem 3rem; }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto; display: grid;
+            grid-template-columns: 2fr 1fr; gap: 4rem; padding-bottom: 4rem;
+            border-bottom: 1px solid #222;
+        }
+        .brand-info h3 { font-size: 1.8rem; margin-bottom: 1.2rem; color: var(--accent-gold); }
+        .brand-info p { color: #888; max-width: 400px; }
+        .contact-info h4 { margin-bottom: 1.2rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; font-family: 'Inter', sans-serif;}
+        .contact-info p { color: #888; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;}
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; text-align: center; color: #555; font-size: 0.8rem; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .story-section { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.8rem; }
+            .shop-controls { flex-direction: column; align-items: stretch; }
+            .search-filter { flex-direction: column; }
+            .process-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .product-image-container { height: 320px; }
+            .fab-whatsapp { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px;}
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Arjun Frames</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Premium Frames.<br><em>Timeless Memories.</em></h1>
+            <p>Handcrafted elegance for your most cherished moments. Curated in Telangana, delivered securely across India.</p>
+            <a href="#shop" class="btn-primary">Explore Collection</a>
+        </div>
+    </section>
+
+    <section id="story" class="story-section">
+        <div class="story-image-container">
+            <img src="https://i.pinimg.com/736x/19/bc/57/19bc5758a9e4f8a17443b98dfa9195cd.jpg" alt="Craftsman working on a wooden frame" class="story-image">
+        </div>
+        <div class="story-content">
+            <h2 class="serif">Crafted With Intent</h2>
+            <p>At Arjun Frames, we believe a frame shouldn't just hold a picture; it should elevate the memory inside it. We are a boutique studio dedicated to sourcing the finest woods, synthetic moldings, and premium glass.</p>
+            <p>Every edge is hand-inspected, and every corner is meticulously joined. We don't mass-produce in a factory; we craft homes for your most important moments.</p>
+            <a href="#shop" style="color: var(--accent-gold); text-decoration: none; font-weight: 500; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1rem; display: inline-block;">Discover Our Materials <i class="ph ph-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <section id="process" style="background-color: var(--surface-color); max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
+            <div class="section-header">
+                <h2>A Seamless Experience</h2>
+                <p>We combine personal boutique service with nationwide reach.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <i class="ph-light ph-magnifying-glass"></i>
+                    <h3>1. Select</h3>
+                    <p>Browse our curated gallery of modern and classic frames.</p>
+                </div>
+                <div class="process-step">
+                    <i class="ph-light ph-whatsapp-logo"></i>
+                    <h3>2. Connect</h3>
+                    <p>Message us via WhatsApp. We confirm stock instantly.</p>
+                </div>
+                <div class="process-step">
+                    <i class="ph-light ph-shield-check"></i>
+                    <h3>3. Secure Payment</h3>
+                    <p>Pay safely via UPI or Razorpay link after confirmation.</p>
+                </div>
+                <div class="process-step">
+                    <i class="ph-light ph-package"></i>
+                    <h3>4. Delivery</h3>
+                    <p>We pack it securely and ship it via premium courier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop">
+        <div class="section-header">
+            <h2>The Gallery</h2>
+            <p>Hover over a frame to see it in a beautifully styled space.</p>
+        </div>
+
+        <div class="shop-controls">
+            <div class="pincode-checker">
+                <input type="text" id="pincodeInput" placeholder="Enter Pincode" maxlength="6">
+                <button class="btn-secondary" onclick="checkPincode()">Check Delivery</button>
+                <span id="pincodeMsg" class="pincode-msg"></span>
+            </div>
+            <div class="search-filter">
+                <input type="text" id="searchInput" placeholder="Search frames..." oninput="handleSearch()">
+                <select id="categoryFilter" onchange="handleFilter()">
+                    <option value="all">All Materials</option>
+                    <option value="wood">Natural Wood</option>
+                    <option value="metal">Premium Metal</option>
+                    <option value="synthetic">Modern Synthetic</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="product-grid" id="product-grid">
+            </div>
+    </section>
+
+    <section class="size-guide">
+        <div class="size-guide-content">
+            <div class="section-header">
+                <h2>Frame Size Guide</h2>
+                <p>Visualize the perfect scale for your space before you order.</p>
+            </div>
+            
+            <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">
+                <em>Pro Tip: 8x10 is perfect for desks, 12x18 for hallways, and 16x24 for statement walls above furniture.</em>
+            </p>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="section-header">
+            <h2>Words From Our Clients</h2>
+            <p>Don't just take our word for it. See what others are saying.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                <p class="quote">"The packaging was so secure, not a single scratch on the glass when it arrived in Delhi. The walnut finish looks incredibly premium in person!"</p>
+                <p class="author">— Rahul S.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                <p class="quote">"I loved the WhatsApp ordering process. It felt personal, and the owner confirmed the stock immediately before I paid. Great trust factor."</p>
+                <p class="author">— Priya M.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                <p class="quote">"The gold leaf edge frame elevated my living room instantly. Worth every penny. I will definitely be buying from Arjun Frames again."</p>
+                <p class="author">— Ananya K.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="brand-info">
+                <h3>Arjun Frames</h3>
+                <p>A boutique retail shop dedicated to preserving your memories in the finest frames. Located in Telangana, delivering nationwide.</p>
+            </div>
+            <div class="contact-info">
+                <h4>Connect With Us</h4>
+                <p><i class="ph-fill ph-whatsapp-logo"></i> +91 97033 32120</p>
+                <p><i class="ph-fill ph-envelope-simple"></i> orders@arjunframes.com</p>
+                <p><i class="ph-fill ph-instagram-logo"></i> @arjunframes</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arjun Frames. Handcrafted in India.</p>
+        </div>
+    </footer>
+
+    <a href="https://i.pinimg.com/1200x/47/ef/56/47ef5671be4b7b81b22b735502a073e8.jpg" 
+       target="_blank" class="fab-whatsapp" aria-label="Chat on WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+
+    <script>
+        const WHATSAPP_NUMBER = "919703332120"; 
+        
+        // Expanded Product Database with Categories and Hover Images
+        const products = [
+            {
+                id: "AF-001",
+                name: "Deep Walnut Classic",
+                category: "wood",
+                price: 1499,
+                size: "12x18 inches",
+                image: "https://i.pinimg.com/1200x/47/ef/56/47ef5671be4b7b81b22b735502a073e8.jpg",
+                lifestyleImage: "https://images.unsplash.com/photo-1618220179428-22790b46a0eb?auto=format&fit=crop&w=800&q=80",
+                inStock: true
+            },
+            {
+                id: "AF-002",
+                name: "Sleek Midnight Black",
+                category: "synthetic",
+                price: 950,
+                size: "8x10 inches",
+                image: "https://i.pinimg.com/736x/a0/fe/03/a0fe03f878e5b45f92a3baf1de349f2c.jpg",
+                lifestyleImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+                inStock: true
+            },
+            {
+                id: "AF-003",
+                name: "Vintage Gold Leaf",
+                category: "metal",
+                price: 2800,
+                size: "16x24 inches",
+                image: "https://i.pinimg.com/736x/f1/21/d7/f121d7c951b908ed0f05975f8bc853c5.jpg",
+                lifestyleImage: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80",
+                inStock: true
+            },
+            {
+                id: "AF-004",
+                name: "Scandi Oak Natural",
+                category: "wood",
+                price: 1100,
+                size: "10x12 inches",
+                image: "https://i.pinimg.com/736x/e7/d5/ac/e7d5aca7854f501449b340fc2f468a1e.jpg",
+                lifestyleImage: "https://images.unsplash.com/photo-1558882224-dda166733046?auto=format&fit=crop&w=800&q=80",
+                inStock: false
+            }
+        ];
+
+        // Render Function
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            if (productsToRender.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light); padding: 3rem;">No frames found matching your criteria.</p>';
+                return;
+            }
+
+            productsToRender.forEach(product => {
+                const stockClass = product.inStock ? 'in-stock' : 'out-of-stock';
+                const stockText = product.inStock ? 'In Stock' : 'Out of Stock';
+                const buttonText = product.inStock ? 'Order via WhatsApp' : 'Out of Stock';
+                const buttonState = product.inStock ? '' : 'disabled';
+                const icon = product.inStock ? '<i class="ph-bold ph-whatsapp-logo"></i>' : '';
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                        <img src="${product.lifestyleImage}" alt="${product.name} in room" class="lifestyle-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="stock-badge ${stockClass}">${stockText}</span>
+                        <h3>${product.name}</h3>
+                        <p class="size-category">${product.size} | ${product.category}</p>
+                        <p class="price">₹${product.price}</p>
+                        <button class="btn-whatsapp" ${buttonState} onclick="handleOrder('${product.id}')">
+                            ${icon} ${buttonText}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Handle WhatsApp Ordering
+        function handleOrder(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const message = `Hello Arjun Frames!\n\nI am interested in purchasing:\n\n- Product: ${product.name}\n- Size: ${product.size}\n- Material: ${product.category}\n- Price: ₹${product.price}\n\nCan you please confirm the stock? My delivery pincode is: [Enter Pincode]`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${9703332120}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Search & Filter Logic
+        function handleSearch() { applyFilters(); }
+        function handleFilter() { applyFilters(); }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categoryTerm = document.getElementById('categoryFilter').value;
+
+            const filtered = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || product.size.toLowerCase().includes(searchTerm);
+                const matchesCategory = categoryTerm === 'all' || product.category === categoryTerm;
+                return matchesSearch && matchesCategory;
+            });
+
+            renderProducts(filtered);
+        }
+
+        // Pincode Checker Logic
+        function checkPincode() {
+            const input = document.getElementById('pincodeInput').value;
+            const msgSpan = document.getElementById('pincodeMsg');
+            
+            if (input.length === 6 && !isNaN(input)) {
+                // Simulating a successful check (you deliver pan-India via courier)
+                msgSpan.style.color = 'var(--stock-green)';
+                msgSpan.innerHTML = '<i class="ph-fill ph-check-circle" style="margin-right: 4px;"></i> Delivery Available!';
+            } else {
+                msgSpan.style.color = 'var(--stock-red)';
+                msgSpan.innerHTML = '<i class="ph-fill ph-warning-circle" style="margin-right: 4px;"></i> Enter a valid 6-digit Pincode.';
+            }
+            
+            // Clear message after 4 seconds
+            setTimeout(() => { msgSpan.innerHTML = ''; }, 4000);
+        }
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+        });
+    </script>
+</body>
+</html>
